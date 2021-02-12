@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Name</title>
+
+    <style>
+
+        html, body{
+            font-family: "Source Sans Pro",sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            margin-left: 25px;
+        }
+        .nav {
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 80px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            background-color: white;
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.10);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: black;
+        }
+        .content {
+            margin-top: 120px;
+            margin-left: 40px;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            padding: 70px;
+            background-color: aqua;
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.10);
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        table {
+            background-color: antiquewhite;
+            padding: 10px;
+            border-style: dashed;
+        }
+       .total {
+           border-top-style: dashed;
+       }
+       #container {
+           padding: 30px 50px;
+       }
+       textarea {
+           resize: none;
+       }
+       .footercontainer {
+            font-size: 18px;
+            font-weight: 600;
+            color: black;
+       }
+       .footer {
+           display: flex;
+           flex-direction: row;
+           justify-content: space-between;
+           padding: 10px 70px;
+       }
+       input,textarea {
+           width: 100%;
+           padding: 9px;
+           font-size: large;
+           margin-top: 7px;
+       }
+       label {
+           font-size: large;
+       }
+       .qn {
+           background-color: blanchedalmond;
+           padding: 3px;
+           border-radius: 50%;
+           cursor: default;
+       }
+       #btn {
+           background-color: #6400e4;
+           color: white;
+           padding: 16px;
+           font-weight: bold;
+           width: 100%;
+           border: transparent;
+           margin-left: 11px;
+           
+       }
+       .footersub {
+           text-align: center;
+           padding-bottom: 20px;
+        }
+        .copyright{
+            text-decoration: none;
+        }
+        .link {
+            text-decoration: none;
+            color: black;
+            font-size: medium;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="nav">
+        <div class="logo">
+            <h4>Website Name</h4>
+        </div>
+    </div>
+    <div class="content">
+        <label for="total">Total</label>
+        <input id="total" type="number" placeholder="Total" >
+        <br>
+        <br>
+        <label for="textArea">Enter att</label>
+        <span class="qn" data-toggle='tooltip' title='here is where you add att'>?</span>
+        <textarea id="textArea" name="text" rows="12" placeholder="Enter att" ></textarea>
+        <br>
+        <br>
+        <input id="btn" type="submit" value="Submit">
+        <br>
+        <br>
+        <div id="container" ></div>
+    </div>
+    <div class="footercontainer">
+        <div class="footer">
+            <div>
+                <h4>Contact Us</h4>
+                <a class="link" href="mailto:revoltstartup@gmail.com" target="_blank">gmail</a>
+                <br>
+                <a class="link" href="https://revolttech.in/" target="_blank" >Website</a>
+            </div>
+            <div>
+                <h4>Projects</h4>
+                <a class="link" href="https://play.google.com/store/apps/details?id=com.revolt.eduprolearning" target="_blank">Edupro Learning App</a>
+                <br>
+                <a class="link" href="https://play.google.com/store/apps/details?id=com.show.thetkmshow" target="_blank">The TKM Show</a>
+                <br>
+                <a class="link" href="https://play.google.com/store/apps/details?id=com.revolt.savvy" target="_blank">Savvy Classes</a>
+                <br>
+            </div>
+            <div>
+                <h4>Overview</h4>
+                <h5>some random text</h5>
+                <h5>some random text</h5>
+            </div>
+        </div>
+        <div class="footersub">
+            <a href="https://revolttech.in/" target="_blank" class="copyright"><span>&copy; Revolt Innovations</span></a>
+        </div>
+    </div>
+
+    
+    <script>
+        const TOTAL = 75;
+        const total = document.getElementById("total");
+        const btn = document.getElementById("btn");
+        const textArea = document.getElementById("textArea");
+        total.value = TOTAL;
+        
+        function deleteTables(){
+            const tables= document.getElementsByTagName('table');
+            while (tables.length>0){
+                tables[0].parentNode.removeChild(tables[0]);
+            }
+        }
+        
+        function doOtherStuffs(present,absent) {
+            const container = document.getElementById("container");
+            const tableElement = document.createElement('table');
+            container.appendChild(tableElement);
+
+            headElement = document.createElement('tr');
+            tableElement.appendChild(headElement);
+            const headings = ['Present','Absent'];
+            headings.forEach(element => {
+                headItem = document.createElement('th');
+                headItem.innerHTML = element;
+                headElement.appendChild(headItem);
+            });
+            
+
+            let len;
+            if (present.length > absent.length) {
+                len = present.length
+            } else {
+                len = absent.length
+            }
+            for (i = 0; i < len; i++) {
+                val1 = present[i];
+                val2 = absent[i];
+                rowElement = document.createElement('tr');
+                rowItem1 = document.createElement('td');
+                rowItem2 = document.createElement('td');
+                if (val1 === undefined) {
+                    val1 = "";
+                }
+                if (val2 === undefined) {
+                    val2 = "";
+                }
+                rowItem1.innerHTML = val1;
+                rowItem2.innerHTML = val2;
+                rowElement.appendChild(rowItem1);
+                rowElement.appendChild(rowItem2);
+                tableElement.appendChild(rowElement);
+            }
+
+            const totalElement = document.createElement('tr');
+            tableElement.appendChild(totalElement);
+            const total = [present.length,absent.length];
+            total.forEach(element => {
+                const totalItem = document.createElement('th');
+                totalItem.innerHTML = element;
+                totalItem.classList.add('total');
+                totalElement.appendChild(totalItem);
+            });
+
+        }
+    
+        function makeUpStuffs(pre){
+            let present = [];
+            let absent = [];
+            
+            for (let i = 1; i <= Number(total.value); i++) {
+                if (pre.includes(i)){
+                    present.push(i);
+                }
+                else{
+                    absent.push(i);
+                }
+            }
+            doOtherStuffs(present,absent)
+        }
+    
+        function calc(){
+            deleteTables();
+            let x = textArea.value;
+            let pre = [];
+            x = x.split("\n");
+            for (let i = 0; i < x.length; i++) {
+                let a = x[i];
+                a =a.trim();
+                if (a.split(" ").length === 1 && !isNaN(a) && Boolean(a) ) {
+                    pre.push(Number(a))                        
+                }
+            }
+            if (pre.length > 0 && total.value > 0){
+                makeUpStuffs(pre);
+            }else if (pre.length <= 0) {
+                alert("No numbers identified");
+            } else {
+                alert("Error in total");
+            }
+        }
+    
+        btn.addEventListener("click",calc);
+        
+    </script>
+
+
+</body>
+</html>
